@@ -27,7 +27,8 @@ class HideCodeHTMLExporter(HTMLExporter):
         """
         classic = [os.path.join(dir, "classic") for dir in jupyter_path("nbconvert", "templates")]
         base = [os.path.join(dir, "base") for dir in jupyter_path("nbconvert", "templates")]
-        return classic + base + [os.path.join(os.path.dirname(__file__), "Templates")]
+        top = jupyter_path("nbconvert", "templates")
+        return classic + base + top + [os.path.join(os.path.dirname(__file__), "Templates")]
 
     # @default('template_path')
     # def _default_template_path(self):

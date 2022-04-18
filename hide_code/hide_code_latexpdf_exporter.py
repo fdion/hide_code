@@ -21,4 +21,7 @@ class HideCodeLatexPDFExporter(PDFExporter):
         We want to inherit from HTML template, and have template under
         `./templates/` so append it to the search path. (see next section)
         """
-        return jupyter_path("nbconvert", "templates") + [os.path.join(os.path.dirname(__file__), "Templates")]
+        classic = [os.path.join(dir, "classic") for dir in jupyter_path("nbconvert", "templates")]
+        base = [os.path.join(dir, "base") for dir in jupyter_path("nbconvert", "templates")]
+        top = jupyter_path("nbconvert", "templates")
+        return classic + base + top + [os.path.join(os.path.dirname(__file__), "Templates")]

@@ -1,4 +1,4 @@
-{%- extends 'index.html.j2' -%}
+{%- extends 'classic/index.html.j2' -%}
 
 {%-block html_head-%}
     <style type="text/css">
