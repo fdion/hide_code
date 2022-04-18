@@ -2,15 +2,9 @@ import os
 import os.path
 import pdfkit
 
-
-# from hide_code.hide_code_html_exporter import HideCodeHTMLExporter
-
-
-from traitlets.config import Config
+from jupyter_core.paths import jupyter_path
 from traitlets import default
-# from nbconvert.exporters.pdf import PDFExporter
 from nbconvert.exporters.html import HTMLExporter
-from traitlets.log import get_logger
 
 
 class HideCodePDFExporter(HTMLExporter):
@@ -38,4 +32,4 @@ class HideCodePDFExporter(HTMLExporter):
         We want to inherit from HTML template, and have template under
         `./templates/` so append it to the search path. (see next section)
         """
-        return super(HideCodePDFExporter, self).template_paths + [os.path.join(os.path.dirname(__file__), "Templates")]
+        return jupyter_path("nbconvert", "templates") + [os.path.join(os.path.dirname(__file__), "Templates")]

@@ -1,5 +1,7 @@
 import os
 import os.path
+
+from jupyter_core.paths import jupyter_path
 from nbconvert.exporters.pdf import LatexExporter
 
 
@@ -19,4 +21,4 @@ class HideCodeLatexExporter(LatexExporter):
         We want to inherit from HTML template, and have template under
         `./templates/` so append it to the search path. (see next section)
         """
-        return super(HideCodeLatexExporter, self).template_paths + [os.path.join(os.path.dirname(__file__), "Templates")]
+        return jupyter_path("nbconvert", "templates") + [os.path.join(os.path.dirname(__file__), "Templates")]
