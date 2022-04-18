@@ -2,6 +2,8 @@ import json
 from os import path, remove
 import shutil
 from .utils import Utils
+
+
 class HideCodeConfig(object):
 
 	config_file =  path.join(Utils.get_module_dir(),'hide_code_config.json')

@@ -2,6 +2,7 @@
 /dist
 /build
 dev-copy.py
+/venv
 /hide_code/__pycache__/*
 /hide_code/*.pyc
 hide_code.egg*
