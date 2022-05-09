@@ -17,19 +17,5 @@ class HideCodeHTMLExporter(HTMLExporter):
 
     @default('template_file')
     def _template_file_default(self):
-        return 'hide_code_full.tpl'
-
-    @property
-    def template_paths(self):
-        """
-        We want to inherit from HTML template, and have template under
-        `./templates/` so append it to the search path. (see next section)
-        """
-        classic = [os.path.join(dir, "classic") for dir in jupyter_path("nbconvert", "templates")]
-        base = [os.path.join(dir, "base") for dir in jupyter_path("nbconvert", "templates")]
-        top = jupyter_path("nbconvert", "templates")
-        return classic + base + top + [os.path.join(os.path.dirname(__file__), "Templates")]
-
-    # @default('template_path')
-    # def _default_template_path(self):
-    #     return os.path.join(os.path.dirname(__file__), "Templates")
+        # trying with template installed in directory on server
+        return 'hide_code_full'
