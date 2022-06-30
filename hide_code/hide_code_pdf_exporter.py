@@ -6,6 +6,48 @@ from jupyter_core.paths import jupyter_path
 from traitlets import default
 from nbconvert.exporters.html import HTMLExporter
 
+CSS="""
+@import url('https://fonts.googleapis.com/css?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Catamaran&display=swap');
+
+div#notebook {
+    font-size: 18px;
+    font-family: 'Catamaran', sans-serif;
+    line-height: 26px;
+}
+img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+}
+tr, img {
+    page-break-inside: avoid;
+}
+*, *:before, *:after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+h1, h2, h3 {
+    font-family: 'Jost', sans-serif;
+}
+p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+    page-break-inside: avoid;
+}
+*, *:before, *:after {
+    page-break-inside: avoid;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+*, *:before, *:after {
+    page-break-inside: avoid;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+"""
 
 class HideCodePDFExporter(HTMLExporter):
     def __init__(self, config=None, **kw):
@@ -20,7 +62,7 @@ class HideCodePDFExporter(HTMLExporter):
 
     def from_notebook_node(self, nb, resources=None, **kw):
         output, resources = super(HideCodePDFExporter, self).from_notebook_node(nb, resources, **kw)
-        output = pdfkit.from_string(output, False)
+        output = pdfkit.from_string(output, False, css=CSS)
         return output, resources
 
     def _template_file_default(self):
