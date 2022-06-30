@@ -62,7 +62,16 @@ class HideCodePDFExporter(HTMLExporter):
 
     def from_notebook_node(self, nb, resources=None, **kw):
         output, resources = super(HideCodePDFExporter, self).from_notebook_node(nb, resources, **kw)
-        output = pdfkit.from_string(output, False, css=CSS)
+        options = {
+            'print-media-type': '',
+            'page-size': 'Letter',
+            'margin-top': "0.1in",
+            'margin-right': "0.1in",
+            'margin-bottom': "0.1in",
+            'margin-left': "0.1in",
+            'encoding': "UTF-8"
+        }
+        output = pdfkit.from_string(output, False, css=CSS, options=options)
         return output, resources
 
     def _template_file_default(self):
