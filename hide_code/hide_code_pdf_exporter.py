@@ -34,8 +34,7 @@ class HideCodePDFExporter(HTMLExporter):
         for path in hide_code:
             css_file = os.path.join(path, "hide_code_custom.css")
             if os.path.exists(css_file):
-                with open(css_file) as f:
-                    css = f.read()
+                css = css_file
         output = pdfkit.from_string(output, False, css=css, options=options)
         return output, resources
 
